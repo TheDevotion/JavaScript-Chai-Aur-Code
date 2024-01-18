@@ -64,8 +64,7 @@ function chai() {
   // if we only console log "this",  we will get multiple contexts, and values.
   // try it !
 
-  // therefor we cannot use this inside a function.
-  // we can only use "this" inside the object.
+  // therefor we cannot use this inside a arrow function.
 }
 
 // chai();
