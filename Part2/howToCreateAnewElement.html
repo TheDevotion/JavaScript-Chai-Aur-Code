@@ -1,0 +1,140 @@
+<!-- 
+    Relations
+
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <div class="parent">
+      <!-- this is a comment -->
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>
+    </div>
+  </body>
+  <script>
+    const parent = document.querySelector(".parent");
+    console.log(parent);
+    console.log(parent.children); // gives HTML collection.
+    // console.log(parent.children[1].innerHTML); // gives tuesday.
+
+    for (let i = 0; i < parent.children.length; i++) {
+      console.log(parent.children[i].innerHTML);
+    }
+
+    parent.children[1].style.color = "orange";
+    console.log(parent.firstElementChild); // gives monday child. // imp property.
+    console.log(parent.lastElementChild); // gives thursday child. // imp property.
+
+    // you can also move from child to parent.
+    const dayOne = document.querySelector(".day");
+    console.log(dayOne); // gives monday.
+
+    // query selector is expensive operation. to do this.
+    // we are traversing the tree.
+    // we wanna go to parent. so dont  travers.
+    // directly go to parent using parentElement
+    // this is DSA tree. :-)
+
+    console.log(dayOne.parentElement); // gives parent element.
+    console.log(dayOne.nextElementSibling); // gives tuesday.
+
+    //////////////////////////////////////////
+
+    console.log("NODES: ", parent.childNodes); // interesting and important.
+
+    // gives 9 node lists. ( its a whole tree structure. therefor 9 )
+    // a line break is a node element too.  browser behind the scenes used a very large tree model.
+    /*
+        NodeList(9) [text, div.day, text, div.day, text, div.day, text, div.day, text]
+    0
+    :
+    text
+    1
+    :
+    div.day
+    2
+    :
+    text
+    3
+    :
+    div.day
+    4
+    :
+    text
+    5
+    :
+    div.day
+    6
+    :
+    text
+    7
+    :
+    div.day
+    8
+    :
+    text
+    length
+    :
+    9
+        */
+
+    // html counts only one line break no matter how many line breaks you \
+    // give it.
+
+    // if we add a comment the nodes become 11 as +1 line break and +1 text
+
+    // react manipulates using childNodes . it has so many references to childNodes.
+
+    ///////////////////////////////////////////////////////////////////
+
+    //How to create node list ?
+
+    // in second file.
+    const div = document.createElement("div");
+    console.log(div); // it holds <div></div>
+    // adding properties:
+
+    div.className = "main";
+    div.id = Math.floor(Math.random() * 10 + 1);
+
+    // to set custom attibutes:
+
+    div.setAttribute("title", "generated title"); // this thing is preffered.
+    div.style.backgroundColor = "green";
+    div.style.padding = "12px";
+    // div.innerText = "Chai aur code";
+
+    // all other values get overwritten.
+    // usko leke aata hai fir set karta hai.
+    // but is process ko double time lagta hai,
+    // isiliye, ek round trip bachane ke liye.
+    // setAttribute use karte hai.
+    // kyonki ye leke nahi aata, sidha badal deta hai.
+
+    // div inside memmory.
+    // not on the page.
+    // we need to attach.
+    // how to attach ?
+
+    const addText = document.createTextNode("Chia aur code");
+
+    div.appendChild(addText);
+
+    // its debatable that which one is more optimized.
+
+    document.body.appendChild(div);
+
+    // You can wrap it inside a new function to create a new div every time.
+    //  you can also pass argument  to add the text
+    // you can run a loop for 5 time for color array,
+  </script>
+</html>
