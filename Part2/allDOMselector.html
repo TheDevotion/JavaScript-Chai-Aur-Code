@@ -1,0 +1,177 @@
+<!-- worked on console.
+You should write .className and not .class as class will give
+
+document.getElementById('title')
+<h1 id=​"title" class=​"heading">​DOM Learning on Chai Aur Code​</h1>​
+document.getElementById('title').id
+'title'
+document.getElementById('title').class
+undefined
+document.getElementById('title').className
+'heading'
+document.getElementById('title').getAttribute
+ƒ getAttribute() { [native code] }
+
+document.getElementById('title').getAttribute('id')
+'title
+
+
+document.getElementById('title').getAttribute('class')
+
+document.getElementById('title').setAttribute('class', 'test')
+
+// IMP - setAttribute will always overWrite HTML
+document.getElementById('title').setAttribute('class', 'test heading')
+
+
+this will set class as test and heading Therefore remember this.
+
+
+
+
+
+const title = document.getElementById('title')
+undefined
+title
+<h1 id=​"title" class=​"test heading">​DOM Learning on Chai Aur Code​</h1>​
+
+
+title.style
+CSSStyleDeclaration {accentColor: '', additiveSymbols: '', alignContent: '', alignItems: '', alignSelf: '', …}
+
+
+title.style.backgroundColor = 'green'
+'green'
+
+title.style.padding = "15px"
+'15px'
+title.style.borderRadius = "10px"
+'10px'
+
+
+// TO add content:
+
+// from this point onwords. I have not taken notes. as it is very time consuming.
+ I am only focusing on the learning part for now
+ So the notes will be of single word. or line.
+ after I finish this topic..
+
+
+
+ innertText vs textContent:
+  innerText will only give text which is visible
+  and textContent will give hidden text to e.g if we give display none to a span inside h1
+
+
+  and innerHTML will give whole HTML (including span tag) and other tags
+ 
+
+  // most used: document.querySelector('h1') will give the first h1 in page
+
+  . querySelectorAll will give all elements. 
+
+  // use selectors like CSS. therefore most widely used querySelector for dom manipulation.
+
+  e.g
+  document.querySelector('input[type="password"]')
+  document.querySelector('p:ifst-child')
+
+  const myUL = document.qyerySelector('ul');
+  const turnGreen = myUL.querySelector('li')
+
+  turnGreen.style.backgroundColor = "green"
+  turnGreen.style.padding = "10px";
+
+  turnGreen.innerText = 'five'
+
+
+  ////////////////////////////////////////////////
+  .. to get mulitiple values.
+
+  document.querySelectorAll('li');
+
+  // you will get node list. (not array)
+
+  const tempLiList = document.querySelectorAll('li');
+
+  // node list and html collection is not a pure array.
+  // map not available.
+
+  tempLiList.style.color = 'green' // this will not happen because its a node list
+  // and not an array.
+
+
+  // to do this work :
+
+ you have to specify. the node which you want to manipulate.
+
+
+ const tempLiList = document.querySelectorAll('li')
+
+ tempLiList[0].style.color = 'green';
+
+
+const myH1 = document.querySelectorAll('h1');
+myH1  ( has node list)
+// even if you have only one item in that list, you still need to specify.
+myH1[0].style.color = 'black';
+
+
+tempList.forEach((item) => {
+ item.style.backgroundColor = 'green'
+})
+
+
+// use forEach on a node list.
+
+document.getElementByClassName('list-item') // will give HTML collection.
+// You cannot iterate ( not mentioned in prototype)
+
+
+const tempClassList = document.getElementByClassName('list-item') // will give HTML collection.
+
+tempClassLlist.forEach()  // will not work. forEach is not a function for HTML COllection.
+
+// You need to convert HTMLCollection:
+
+    // from ? kahase convert karnat hai.
+ Array.from(tempClassList)
+
+ // now you can use all the array functions.
+
+ const myConvertedArray = Array.from(tempClassList);
+
+
+ myConvertedArray.forEach((li) => {
+    li.style.color = 'orange';
+ })
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>DOM learning</title>
+    <style>
+      body {
+        background-color: #212121;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-black">
+      <h1 id="title" class="heading">DOM Learning on Chai Aur Code</h1>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <ul>
+        <li class="list-item">one</li>
+        <li class="list-item">two</li>
+        <li class="list-item">three</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    let result = document.getElementById("title").id;
+  </script>
+</html>
