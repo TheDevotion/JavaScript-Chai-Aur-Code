@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chai Aur Code DOM</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <ul class="language">
+      <li>Javascript</li>
+    </ul>
+  </body>
+  <script>
+    function addLanguage(langName) {
+      // create a list item
+      const li = document.createElement("li");
+      li.innerHTML = `${langName}`; // basically this needs traversing. that why costly.
+
+      // select ul  // and then append
+      document.querySelector(".language").appendChild(li);
+    }
+
+    addLanguage("python");
+    addLanguage("typescript");
+
+    // problem with this ?
+    // it needs to traverse the whole tree inside document.
+    // we are traversing from parent till the last style.
+    // imagin you have 1 million such lines, then it will take a lot of time to do it.
+    // this method is costly.
+
+    // we need large scale optimized approach :
+
+    function addOptiLanguage(langName) {
+      const li = document.createElement("li");
+      li.appendChild(document.createTextNode(langName));
+      document.querySelector(".language").appendChild(li);
+    }
+
+    addOptiLanguage("golang");
+
+    // therefore try to avoid innerHTML. always preffer appendChild.
+
+    /////////////////////////////////////////////////
+    // Editing the element:   // by creating new element.
+
+    const secondLang = document.querySelector("li:nth-child(2)");
+
+    console.log(secondLang); // just to check
+
+    const newLi = document.createElement("li");
+    newLi.textContent = "Mojo"; // not much different than innerHTML for time cost
+    // it may be even worse.
+    secondLang.replaceWith(newLi);
+
+    ////////////////////
+
+    const firstLang = document.querySelector("li:first-child");
+    firstLang.outerHTML = "<li>TypeScript</li>";
+
+    //////////////////////
+    // Remove.
+
+    const lastLang = document.querySelector("li:last-child");
+    lastLang.remove();
+  </script>
+</html>
