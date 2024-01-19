@@ -1,0 +1,60 @@
+<!-- windows is an object  try condole.log(window) -->
+<!-- console.log(window.document) -->
+<!-- console.log(document ) gives same thing. -->
+<!-- in special case use console.dir(document) -->
+<!-- // DOM manipulation: -->
+<!-- diagram  -->
+
+<!--
+window -> document -> html -> 
+                    1)Head -> i) Title  -> text node. (tree wala node)
+                                
+                              ii) meta -> attribute.
+
+                    2)Body -> i) div -> attribute
+                                     i)  h1 -> attribute
+                                            -> text node
+
+                                     ii) p -> text node
+
+// main thing is You should know the parents/ childs / siblings 
+// 
+
+IN CONSOLE : 
+// console.log(document.baseURI) // gives uri
+// consol.log(document.links) // will give all links
+This will give HTMLCollection and not an array.
+// it can be converted to array. but by default they are not array.
+
+console.log(document.llinks[2]) gives second links.
+
+
+/// to select brendan Eich (wikipedia)
+
+dcument.getElementById('firstHeading')
+// you can manipulate on thi,
+
+dcument.getElementById('firstHeading').innerHTML = '<h1>Dipak Jadhav</h1>';
+
+
+
+
+
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>DOM learning</title>
+  </head>
+  <body>
+    <div class="bg-black">
+      <h1 class="heading">DOM Learning on Chai Aur Code</h1>
+      <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+  </body>
+</html>
