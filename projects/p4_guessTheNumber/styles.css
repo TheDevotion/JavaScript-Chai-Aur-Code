@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+  text-align: center;
+  align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  margin-top: 10vh;
+  background-color: #212121;
+  color: #fff;
+}
+a {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5%;
+  color: white;
+  background-color: rgb(27, 26, 26);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label,
+input,
+button {
+  margin: 10px auto;
+}
+
+#subt {
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#guess {
+  font-size: 2rem;
+}
+
+.guesses {
+  background-color: gray;
+}
+
+#newGame {
+  background-color: white;
+  color: red;
+  cursor: pointer;
+  border: 1px solid yellow;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 50%;
+  margin: 10px auto;
+}
