@@ -1,0 +1,55 @@
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+span {
+  display: block;
+}
+
+a {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5%;
+  color: white;
+  background-color: rgb(40, 39, 39);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.canvas {
+  margin: 50px auto 50px;
+  width: 80%;
+}
+
+.button {
+  width: 75px;
+  height: 75px;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+#grey {
+  background-color: grey;
+}
+
+#white {
+  background-color: white;
+}
+
+#blue {
+  background-color: blue;
+}
+
+#yellow {
+  background-color: yellow;
+}
+
+#purple {
+  background-color: purple;
+}
