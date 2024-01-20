@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML events</title>
+  </head>
+  <body style="background-color: #414141; color: aliceblue">
+    <h2>Amazing image</h2>
+    <div>
+      <ul id="image">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+    <script>
+      // Js events run sequentially..
+      // but some exceptions are there.
+      // browser events are such exceptions. e.g activity drag click etc etc. (activities)
+
+      // dont inject inside onclick html (in pure js)
+
+      // 2nd approach:
+
+      // this is an onclick event which activates when we click the html tag
+      //   document.getElementById("owl").onclick = function () {
+      //     alert("owl clicked");  // this to is not feasible.
+      //   };
+
+      // therfore use eventListeners. and not onclick..
+
+      // attachEvent():
+      // jQuery - on
+
+      // BEST APPROACH:
+      // IMP for interview
+      //   document.getElementById("owl").addEventListener(
+      //     "click",
+      //     function (e) {
+      //       //   alert("owl clicked again");
+      //       //   console.log(e); // browser and environment event. (it gives an object.)// this will give
+      //       // every possible thing about that element/event/position.
+      //       // most js interviwquestions are related to this.
+      //     },
+      //     false
+      //   ); // Third parameter is default false.
+
+      // type, timestamp, defaultPrevented (form submit wala),
+      // target, toElement, IMP: srcElement, currentTarget,
+      // interview: clientX, clientY, screenX, screenY, tiltX, tiltY.
+      // altkey, ctrlkey, (special keys), shiftkey, keyCode
+
+      //////////////////////////////////////////////////////////
+
+      // event propogation.
+      // what it is and how to prevent it ?
+
+      // event bubbling (imp), event capturing.
+
+      // event object: IMP.
+
+      //   document.getElementById("image").addEventListener(
+      //     "click",
+      //     function (e) {
+      //       console.log("clicked inside the ul"); // this gets printed after owl
+      //     },
+      //     false // if we set this to true. it goes to capturing mode
+      //     // and it will print first.
+      //   );
+      //   document.getElementById("owl").addEventListener(
+      //     "click",
+      //     function (e) {
+      //       console.log("clicked owl"); // this will get printed first.
+      //       e.stopPropagation(); // the event will not bubble up now.
+      //       // and it will not go to top element.
+      //       // note- only clicked own was shown in console.
+      //     },
+      //     false
+      //   );
+
+      /////////////////////////////////////////
+      // this is called "bubbling up".
+      // as bubble goes from bottom to top.
+      // so inner element will go first and then outer.
+
+      // "capturing" is done when we set third argument true of the outer element.
+      // capturing goes from top to bottom.
+
+      /////////////////////////////////////////////////
+      // sometimes we dont want the bubbling to continue.
+      // we dont want inner element to bubble up.
+
+      // we use e.stopPropagation() in that case.
+
+      /////////////////////////////////////////////////
+      //   we also have preventDefault();
+
+      //   document.getElementById("google").addEventListener("click", function (e) {
+      //     e.preventDefault();
+      //     e.stopPropagation();
+      //     console.log("google clicked"); // will give google clicked but will not go to google page.
+      //   });
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      // we want the image to be gone after we click it.
+
+      document.querySelector("#image").addEventListener(
+        "click",
+        function (e) {
+          //e will give node.
+
+          // the tagName will give the name of the tag.
+          // NOTE --- this was e.target.parentNode before.
+          console.log(e.target.tagName); // .target gives target of event. will give whole img tag.
+          // and .parentNode will give <li></li>
+
+          if (e.target.tagName === "IMG") {
+            console.log(e.target.id); // give photoshop on console.
+            let removeIt = e.target.parentNode;
+            removeIt.remove(); // this will remove the whole li element.
+          }
+
+          // 2nd method:
+          // we go one more step up. // we will get ul.
+          // then we will remove its child.
+          // which child ? the removeIt child.
+          //   removeIt.parentNode.removeChild(removeIt); // Newer method.
+
+          // now if you click the whole li ( the disc of li) all of the images will get removed.
+          // that is the ul elemet gets removed.
+
+          //////////////////////////////////////////////////
+
+          // to prevent this, we can add some strict checks:
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
