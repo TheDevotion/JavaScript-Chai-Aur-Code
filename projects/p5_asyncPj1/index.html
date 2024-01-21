@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project with async 1</title>
+  </head>
+  <body>
+    <h1>Chai aur code</h1>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    // works like time please xD.
+    // a method which calls api.
+
+    const sayDipak = function () {
+      console.log("Dipak");
+    };
+
+    const changeText = function () {
+      document.querySelector("h1").innerHTML = "best JS series";
+    };
+
+    const changeMe = setTimeout(changeText, 2000); // this is how you can change anything in webpage
+    // when we visit a website. and something pops up after 2 or 5 seconds.
+    setTimeout(sayDipak, 2000);
+
+    // now how can i stop the time out ?
+    // I want to stop that event . so how to do it ?
+    // there is another funcion for that.
+
+    // clearTimeout(changeMe); // it needs reference of which timeout you want to clear.
+    // this will stop the setTimeout function.
+
+    // but doing this is not that useful.
+    // therfore use it on an event.
+
+    document.querySelector("#stop").addEventListener("click", function (e) {
+      clearTimeout(changeMe);
+      console.log("STOPPED");
+    });
+  </script>
+</html>
