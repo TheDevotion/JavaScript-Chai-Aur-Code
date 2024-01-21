@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XML HTTP request</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <!-- 
+        fetch is fairly new
+    We are learning XML http request
+// AJAX Related.
+// asnc js and  XML therefore it is called AJAX.
+
+// states:
+
+value   state       description:
+
+0 -     UNSENT - client has been created. open() not called yet.
+1 -     OPENED - open() has been called.
+2 -     HEADERS_RECEIVED  -    send() has been called, and headers and status are available.
+3 -     LOADING - downloading ; responseText holds partial data.
+4 -     DONE   -  The operation is complete.
+-->
+  </body>
+  <script>
+    // for knowledge.
+    // its a class
+
+    const requestUrl = "https://api.github.com/users/TheDevotion";
+    const xhr = new XMLHttpRequest(); // because it a xhr request.
+    xhr.open("GET", requestUrl);
+    xhr.onreadystatechange = function () {
+      console.log(xhr.readyState); // will print 2 3 4
+    };
+    console.log(xhr.readyState); // prints 1.
+
+    // prints 1 2 3 4 .
+    xhr.send(); // .send will actually send the request.
+  </script>
+</html>
