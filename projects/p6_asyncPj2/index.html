@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project 2 async</title>
+  </head>
+  <body>
+    <h1>Chai aur Code</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    // function which will say the name given to it.
+    const sayName = function (str) {
+      console.log(str);
+    };
+
+    // query selectors.
+
+    const start = document.querySelector("#start");
+    const stop = document.querySelector("#stop");
+
+    // setInterval method which will print Dipak every 1 second.
+    start.addEventListener("click", function () {
+      const intervalID = setInterval(sayName, 1000, "Dipak");
+
+      stop.addEventListener("click", function () {
+        clearInterval(intervalID);
+      });
+    });
+  </script>
+</html>
