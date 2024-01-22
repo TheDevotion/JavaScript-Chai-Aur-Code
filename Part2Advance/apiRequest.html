@@ -32,8 +32,16 @@ value   state       description:
     xhr.open("GET", requestUrl);
     xhr.onreadystatechange = function () {
       console.log(xhr.readyState); // will print 2 3 4
+
+      if (xhr.readyState === 4) {
+        // JSON.parse will convert string into JSON.
+        const data = JSON.parse(this.responseText); // we need to use this. // this will give json.
+        // it wiil be in string form.
+        console.log(typeof data); // now it will give object.
+        console.log(data.followers); // undefined.
+      }
     };
-    console.log(xhr.readyState); // prints 1.
+    // console.log(xhr.readyState); // prints 1.
 
     // prints 1 2 3 4 .
     xhr.send(); // .send will actually send the request.
