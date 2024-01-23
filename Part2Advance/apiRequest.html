@@ -22,6 +22,9 @@ value   state       description:
 3 -     LOADING - downloading ; responseText holds partial data.
 4 -     DONE   -  The operation is complete.
 -->
+
+    <!-- FOR ASSIGNMENT. -->
+    <div class="profile"></div>
   </body>
   <script>
     // for knowledge.
@@ -38,12 +41,22 @@ value   state       description:
         const data = JSON.parse(this.responseText); // we need to use this. // this will give json.
         // it wiil be in string form.
         console.log(typeof data); // now it will give object.
-        console.log(data.followers); // undefined.
+        console.log(data.followers);
+        const avatar = data.avatar_url;
+        const profile = document.querySelector(".profile");
+
+        profile.innerHTML = `<img src="${avatar}">
+                              <br>
+                              <h2>Followers:</h2> ${data.followers}`;
+
+        console.log(data);
       }
     };
     // console.log(xhr.readyState); // prints 1.
 
     // prints 1 2 3 4 .
     xhr.send(); // .send will actually send the request.
+
+    /// Assingnment to display profile photo and how many followers you have when you click a button.
   </script>
 </html>
