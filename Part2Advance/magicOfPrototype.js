@@ -66,12 +66,12 @@ function createUser(username, score) {
 // as we can make functions inside object.
 
 createUser.prototype.increment = function () {
-  this.score++;
+  this.price++;
 };
 
 // lets inject one more method.
 createUser.prototype.printMe = function () {
-  console.log(`score is ${this.score}`);
+  console.log(`Price is ${this.score}`);
 };
 
 const chai = new createUser("Chai", 10);
@@ -94,7 +94,142 @@ const tea = new createUser("tea", 7);
 
 chai.printMe(); // cannot read properties of undefined.
 
-// because the values were created. but, when we assigned it to const chai,
+//  and properties were injected.. but, when we assigned it to const chai,
 // we didnt mention it that we have additional properties.
 
 // and this job is done by new keyword.
+
+///////////////////////////////////////////
+// gave price is 10.
+
+// IMP NOTES:
+
+/*
+Here's what happens behind the scenes when the new keyword
+is used:
+
+A new object is created: The new keyword initiates the creation
+of a new JavaScript object.
+
+A prototype is linked: the newly created object gets linked
+to  the prototype property of the constructor function.
+This means that it has access to properties and methods defined on 
+the constructors's prototype.
+
+The constructor is called: The constructor function is
+called with the specified arguments and this is boud to 
+the newly created object. if no explicit return value is specified
+from the constructor, javaScript assumes this,
+the newly created object, to be the intended return value.
+
+The new object is returned: After the constructor function has been called,
+if it doesn't return a non-primitive value (object, array, function, etc.)
+the newly created object is returned.
+
+*/
+
+console.log(`'''''''''''''''''''''''''''''''''''`);
+
+//  Prototype in detail:
+
+let myName = "Dipak       ";
+
+console.log(myName.length);
+
+// not trim we want the true length.
+
+console.log(myName.trim().length);
+
+// but i want shorter function:
+
+console.log(myName.truelength);
+
+// create a truelength method:
+
+let myHero = ["thor", "spiderman"];
+
+let heroPower = {
+  thor: "hammer",
+  spiderman: "sling",
+
+  getSpiderPower: function () {
+    console.log(`spidy power is ${ths.spiderman}`);
+  },
+};
+
+// we want every object to have this functionality/ method. so,
+
+// we access a top level hirearchy and gave it a property.
+// so cool !!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Object.prototype.Dipak = function () {
+  console.log(`Dipak is present in all objects`);
+};
+
+// heroPower.Dipak();
+
+myHero.Dipak();
+
+Array.prototype.HeyDipak = function () {
+  console.log("Dipak says hello");
+};
+
+myHero.HeyDipak();
+
+// heroPower.HeyDipak(); // object does not has that power. but array does.
+// because we implemented it at an lower level. i.e. array.
+
+///////////////////////////////////////////////////
+
+const User = {
+  name: "Chai",
+  email: "chai@google.com",
+};
+const Teacher = {
+  makeVideo: true,
+};
+
+const TeachingSupport = {
+  isAvailable: false,
+};
+
+const TASupport = {
+  makeAssignment: "JS assignment",
+  ifullTime: true,
+  __proto__: TeachingSupport, // now TA support and Teaching Support are linked.
+};
+
+// you can also link them outside.
+Teacher.__proto__ = User; // teacher can access all properties of user.
+
+// this is prototypal inheritance.
+// you can access the properties of other object.
+
+// but this is old !!!!!!!!!!!!!!1\
+
+////////////////////////////////////////////////
+// NEW SYNTAX :
+/////////////////////////////////////////////////////////
+
+Object.setPrototypeOf(TeachingSupport, Teacher);
+
+//////////////////////////////////////////////////
+// now our original problem:
+
+console.log(`==========================================`);
+
+let anotherUsername = "Chai aur Code         ";
+
+String.prototype.trueLength = function () {
+  console.log(`${this}`); // chai aur code.
+  console.log(`True length is: ${this.trim().length}`);
+};
+
+anotherUsername.trueLength();
+
+// note that trim will not trim the white spaces between words.
+
+"Dipak    ".trueLength(); // jisne call kiya vahi hai.
+//matlab Dipak ne call kiya to this me dipak hi hai.
+
+"iceTea".trueLength();
