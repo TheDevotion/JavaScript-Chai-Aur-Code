@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+  <body>
+    <button>Button Clicked</button>
+  </body>
+  <script>
+    class React {
+      constructor() {
+        this.library = "React";
+        this.server = "https://localhost:300";
+
+        // business requirement:
+        // as soon as page loads create a react object.
+
+        document
+          .querySelector("button")
+          .addEventListener("click", this.handleClick)
+          .bind(this); // you have to bind like this.
+      }
+
+      handleClick() {
+        console.log(`button clicked`);
+        // console.log(this.server); // gives undefined.
+        console.log(this); // this has reference . and it also has button.
+
+        // okay so when this happens, (it a very common situation BTW)
+
+        // special keyword: bind ( attach kardo apne sath.)
+      }
+    }
+
+    const app = new React();
+  </script>
+</html>
